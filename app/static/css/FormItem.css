@@ -1,0 +1,26 @@
+.form__list {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.form__item {
+    width: 400px;
+    height: 250px;
+    margin: 25px 10px 10px 10px;
+    border: 1px solid #116e08;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.form__title {
+    font-family: Arial;
+    font-weight: 400;
+    font-size: 20px;
+    color: black;
+    padding: 0 30px;
+    text-align: center;
+}

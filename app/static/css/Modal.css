@@ -1,0 +1,84 @@
+.modal {
+    position: absolute;
+    opacity: 0;
+    left: -10000px;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+    background-color: white;
+    width: 350px;
+    padding: 25px 15px;
+    border: 1px solid #116e08;
+    border-radius: 10px;
+    box-shadow: 0 0 20px #211f1f;
+    transition: opacity .3s;
+}
+
+.modal .form {
+    display: flex;
+    justify-content: center;
+}
+
+.modal h1 {
+    font-weight: 400;
+    font-family: Arial;
+    font-size: 25px;
+    padding-left: 15px;
+}
+
+.form__control {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.form__control button {
+    margin-top: 15px;
+    margin-right: 15px;
+}
+
+.dataModal {
+    height: 500px;
+    overflow: auto;
+    cursor: default;
+}
+
+.dataModal .data__title {
+    font-size: 20px;
+}
+
+.data__body h3 {
+    font-size: 17px;
+    font-weight: 400;
+    font-family: Arial;
+    color: rgba(75, 72, 72, 0.81);
+    padding-bottom: 10px;
+}
+
+.data__body p {
+    font-size: 15px;
+    font-weight: 400;
+    font-family: Arial;
+    padding-bottom: 10px;
+}
+
+.data__body div {
+    margin: 20px 0;
+}
+
+.close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.close img {
+    width: 25px;
+    height: 25px;
+}
+
+
+
+

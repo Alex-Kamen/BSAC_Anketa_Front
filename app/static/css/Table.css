@@ -1,0 +1,47 @@
+table {
+    border-collapse: collapse;
+    width: 100%;
+    cursor: default;
+}
+
+th {
+    background-color: rgba(17, 110, 8, 0.5);
+    text-align: left;
+}
+
+tr {
+    border-bottom: 1px solid #116e08;
+}
+
+td, th {
+    padding: 10px 15px;
+    font-size: 17px;
+    font-weight: 400;
+    font-family: Arial;
+}
+
+.diogram__table {
+    margin: 25px 25px 25px 10px;
+    width: 45%;
+}
+
+.diogram__content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.actions img {
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    margin-right: 15px;
+}
+
+

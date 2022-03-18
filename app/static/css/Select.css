@@ -1,0 +1,27 @@
+.optionWrapper {
+    position: relative;
+}
+
+.optionList {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 328px;
+    max-height: 300px;
+    overflow: auto;
+    z-index: 100;
+    background-color: #ffffff;
+}
+
+.optionItem {
+    padding: 10px;
+    font-size: 15px;
+    font-weight: 400;
+    font-family: Arial;
+    transition: background-color .3s;
+    cursor: pointer;
+}
+
+.optionItem:hover {
+    background-color: #dadada;
+}

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Анкетирование</title>
+	<link rel="shortcut icon" href="http://anketaback.vfbsac.by/static/img/bsac_logo.ico" type="image/x-icon">
+	<link rel="stylesheet" type="text/css" href="http://anketa.vfbsac.by/app/static/css/style.css">
+	<link rel="stylesheet" type="text/css" href="http://anketa.vfbsac.by/app/static/css/Auth.css">
+	<link rel="stylesheet" type="text/css" href="http://anketa.vfbsac.by/app/static/css/input.css">
+	<link rel="stylesheet" type="text/css" href="http://anketa.vfbsac.by/app/static/css/FormItem.css">
+	<link rel="stylesheet" type="text/css" href="http://anketa.vfbsac.by/app/static/css/Select.css">
+	<link rel="stylesheet" type="text/css" href="http://anketa.vfbsac.by/app/static/css/QuestionList.css">
+	<link rel="stylesheet" type="text/css" href="http://anketa.vfbsac.by/app/static/css/Filter.css">
+	<link rel="stylesheet" type="text/css" href="http://anketa.vfbsac.by/app/static/css/Table.css">
+	<link rel="stylesheet" type="text/css" href="http://anketa.vfbsac.by/app/static/css/Modal.css">
+	<link rel="stylesheet" type="text/css" href="http://anketa.vfbsac.by/app/static/css/Data.css">
+	<script type="text/javascript" src="http://anketa.vfbsac.by/app/Store/modules/AnswerModule.js"></script>
+	<script type="text/javascript" src="http://anketa.vfbsac.by/app/Store/modules/FormModule.js"></script>
+	<script type="text/javascript" src="http://anketa.vfbsac.by/app/Store/modules/UserModule.js"></script>
+	<script type="text/javascript" src="http://anketa.vfbsac.by/app/Store/modules/DepartmentModule.js"></script>
+	<script type="text/javascript" src="http://anketa.vfbsac.by/app/Store/modules/SpecialityModule.js"></script>
+	<script type="text/javascript" src="http://anketa.vfbsac.by/app/Store/modules/DisciplineModule.js"></script>
+	<script type="text/javascript" src="http://anketa.vfbsac.by/app/Store/modules/SettingsModule.js"></script>
+	<script type="text/javascript" src="http://anketa.vfbsac.by/app/Store/Store.js"></script>
+	<script type="text/javascript" src="http://anketa.vfbsac.by/app/Router/Router.js"></script>
+	<script type="text/javascript" src="http://anketa.vfbsac.by/app/pages/List.js"></script>
+	<script type="text/javascript" src="http://anketa.vfbsac.by/app/pages/Auth.js"></script>
+	<script type="text/javascript" src="http://anketa.vfbsac.by/app/pages/FormList.js"></script>
+	<script type="text/javascript" src="http://anketa.vfbsac.by/app/pages/Form.js"></script>
+	<script type="text/javascript" src="http://anketa.vfbsac.by/app/pages/Data.js"></script>
+	<script type="text/javascript" src="http://anketa.vfbsac.by/app/pages/Dashboard.js"></script>
+	<script type="text/javascript" src="http://anketa.vfbsac.by/app/Components/table/Table.js"></script>
+	<script type="text/javascript" src="http://anketa.vfbsac.by/app/Components/Header.js"></script>
+	<script type="text/javascript" src="http://anketa.vfbsac.by/app/Components/SubHeader.js"></script>
+	<script type="text/javascript" src="http://anketa.vfbsac.by/app/Components/questionTypes/TextArea.js"></script>
+	<script type="text/javascript" src="http://anketa.vfbsac.by/app/Components/questionTypes/QuestionInput.js"></script>
+	<script type="text/javascript" src="http://anketa.vfbsac.by/app/Components/questionTypes/Checkbox.js"></script>
+	<script type="text/javascript" src="http://anketa.vfbsac.by/app/Components/QuestionItem.js"></script>
+	<script type="text/javascript" src="http://anketa.vfbsac.by/app/Components/inputs/Select.js"></script>
+	<script type="text/javascript" src="http://anketa.vfbsac.by/app/Components/inputs/Input.js"></script>
+	<script type="text/javascript" src="http://anketa.vfbsac.by/app/Components/FormItem.js"></script>
+	<script type="text/javascript" src="http://anketa.vfbsac.by/app/Components/Filter.js"></script>
+	<script type="text/javascript" src="http://anketa.vfbsac.by/app/Components/forms/DepartmentForm.js"></script>
+	<script type="text/javascript" src="http://anketa.vfbsac.by/app/Components/forms/SpecialityForm.js"></script>
+	<script type="text/javascript" src="http://anketa.vfbsac.by/app/Components/forms/UserForm.js"></script>
+	<script type="text/javascript" src="http://anketa.vfbsac.by/app/Components/forms/DisciplineForm.js"></script>
+	<script type="text/javascript" src="http://anketa.vfbsac.by/app/Components/modals/AddDepartmentModal.js"></script>
+	<script type="text/javascript" src="http://anketa.vfbsac.by/app/Components/modals/EditDepartmentModal.js"></script>
+	<script type="text/javascript" src="http://anketa.vfbsac.by/app/Components/modals/DeleteDepartmentModal.js"></script>
+	<script type="text/javascript" src="http://anketa.vfbsac.by/app/Components/modals/AddDisciplineModal.js"></script>
+	<script type="text/javascript" src="http://anketa.vfbsac.by/app/Components/modals/EditDisciplineModal.js"></script>
+	<script type="text/javascript" src="http://anketa.vfbsac.by/app/Components/modals/DeleteDisciplineModal.js"></script>
+	<script type="text/javascript" src="http://anketa.vfbsac.by/app/Components/modals/AddSpecialityModal.js"></script>
+	<script type="text/javascript" src="http://anketa.vfbsac.by/app/Components/modals/EditSpecialityModal.js"></script>
+	<script type="text/javascript" src="http://anketa.vfbsac.by/app/Components/modals/DeleteSpecialityModal.js"></script>
+	<script type="text/javascript" src="http://anketa.vfbsac.by/app/Components/modals/AddUserModal.js"></script>
+	<script type="text/javascript" src="http://anketa.vfbsac.by/app/Components/modals/EditUserModal.js"></script>
+	<script type="text/javascript" src="http://anketa.vfbsac.by/app/Components/modals/DeleteUserModal.js"></script>
+	<script type="text/javascript" src="http://anketa.vfbsac.by/app/Components/modals/DataModal.js"></script>
+	<script type="text/javascript" src="http://anketa.vfbsac.by/app/Components/modals/DeleteAnswerModal.js"></script>
+	<script type="text/javascript" src="http://anketa.vfbsac.by/app/Router/routes.js"></script>
+</head>
+<body>
+	<div class="wrapper">
+		<div class="content">
+			<div id="app">
+
+			</div>
+		</div>
+		<div class="footer">
+			<div class="container">
+				<div class="footer__inner">
+					<p class="footer__text">Витебский филиал УО Белорусская государственная академия связи</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="http://anketa.vfbsac.by/app/index.js"></script>
+</body>
+</html>

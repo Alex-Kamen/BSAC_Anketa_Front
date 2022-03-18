@@ -1,0 +1,42 @@
+.filterBlock {
+    background-color: white;
+    border: 1px solid #116e08;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 0 20px #211f1f;
+    display: inline-block;
+    position: absolute;
+    right: -1000px;
+    opacity: 0;
+    transition: opacity .3s;
+}
+
+.filter__button img {
+    width: 22px;
+    height: 22px;
+}
+
+.filter__button {
+    cursor: pointer;
+    position: absolute;
+    right: 25px;
+    top: -40px;
+    transition: background-color .3s;
+    height: 40px;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.filter__button:hover {
+    background-color: rgba(17, 110, 8, 0.7);
+}
+
+.report {
+    right: 65px;
+}
+
+.filterBlock .error {
+    display: none;
+}
