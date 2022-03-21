@@ -16,6 +16,7 @@ class Select {
                     selected="${value.value || ''}"
                     inputName="${params.inputName || ''}"
                     autocomplete="off"
+                    optionsList="${JSON.stringify(params.options).replace(/"/g, '\`')}"
                 >
                 <div class="optionWrapper">
                     <div class="optionList hidden" id="optionList${params.inputId}" >
@@ -50,6 +51,8 @@ class Select {
         },
 
         errorMessage(inputId, options) {
+            const input = document.querySelector(`#input${inputId}`);
+            options = JSON.parse(input.getAttribute('optionsList').replace(/`/g, '"'));
             let errorMessage = document.querySelector(`#error${inputId}`);
 
             if (!errorMessage) return false;
@@ -102,6 +105,7 @@ class Select {
         },
 
         rerenderOptionList(inputId, options) {
+            console.log(options)
             options = JSON.parse(options.replace(/`/g, '"'));
             this.errorMessage(inputId, options);
             const newList = options.filter((option) => option.name.match(new RegExp(`.*${this.getInputValue(inputId)}.*`)));

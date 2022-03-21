@@ -82,7 +82,7 @@ class List {
             const modal = document.querySelector(`.modal[id="data${answerId}"]`);
             modal.style.opacity = 0;
             setTimeout(() => {
-                modal.style.left = '-10000px';
+                modal.style.transform = '-10000px';
             }, 500);
         }
     }
