@@ -51,7 +51,7 @@ class Auth {
                 if (response.status) {
                     localStorage.setItem('session', JSON.stringify(response));
 
-                    if (response.status === 'admin') {
+                    if (response.status === 'admin' || response.status === 'departmentManager') {
                         new Router().relocate('/dashboard');
                         return;
                     }

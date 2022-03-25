@@ -75,6 +75,7 @@ class List {
             })
 
             modal.style.left = '50%';
+            modal.style.top = `${document.querySelector('html').offsetHeight / 2 - modal.offsetHeight/2}px`;
             modal.style.opacity = 1;
         },
 
@@ -82,7 +83,7 @@ class List {
             const modal = document.querySelector(`.modal[id="data${answerId}"]`);
             modal.style.opacity = 0;
             setTimeout(() => {
-                modal.style.transform = '-10000px';
+                modal.style.left = '-10000px';
             }, 500);
         }
     }

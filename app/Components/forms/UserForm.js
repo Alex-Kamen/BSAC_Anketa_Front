@@ -5,6 +5,7 @@ class UserForm {
             {value: 'hirer', name: 'Работодатель'},
             {value: 'staff', name: 'Персонал'},
             {value: 'admin', name: 'Администратор'},
+            {value: 'departmentManager', name: 'Зав. кафедры'},
         ]
 
         return `

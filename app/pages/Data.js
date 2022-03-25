@@ -1,5 +1,7 @@
 class Data {
     template() {
+        const isDepartmentManager = JSON.parse(localStorage.getItem('session')).status === 'departmentManager'
+
         return `${new Header().template()}
                 ${new SubHeader().template()}
                 <div class="data">
@@ -10,21 +12,22 @@ class Data {
                             <div class="addDisciplineModal"></div>
                             <div>${new AddSpecialityModal().template()}</div>
                         </div>
+                        <div class="container">
                         <div class="data__list">
-                            <div class="list">
+                            ${!isDepartmentManager ? `<div class="list">
                                 <div class="list__header">
                                     <h1 class="list__title">Пользователи</h1>
                                     <button class="inline__button" onclick="new Data().methods.openModal('addUser')">Добавить пользователя</button>
                                 </div>
                                 <div class="userList"></div>
-                            </div>
-                            <div class="list">
+                            </div>` : ''}
+                            ${!isDepartmentManager ? `<div class="list">
                                 <div class="list__header">
                                     <h1 class="list__title">Кафедры</h1>
                                     <button class="inline__button" onclick="new Data().methods.openModal('addDepartment')">Добавить кафедру</button>
                                 </div>
                                 <div class="departmentList"></div>
-                            </div>
+                            </div>` : ''}
                             <div class="list">
                                 <div class="list__header">
                                     <h1 class="list__title">Дисциплины</h1>
@@ -32,13 +35,14 @@ class Data {
                                 </div>
                                 <div class="disciplineList"></div>
                             </div>
-                            <div class="list">
+                            ${!isDepartmentManager ? `<div class="list">
                                 <div class="list__header">
                                     <h1 class="list__title">Специальности</h1>
                                     <button class="inline__button" onclick="new Data().methods.openModal('addSpeciality')">Добавить специальность</button>
                                 </div>
                                 <div class="specialityList"></div>
-                            </div>
+                            </div>` : ''}
+                        </div>
                         </div>
                     </div>
                 </div> 
@@ -46,10 +50,13 @@ class Data {
     }
 
     mounted() {
-        this.methods.departmentList();
+        if (JSON.parse(localStorage.getItem('session')).status !== 'departmentManager') {
+            this.methods.departmentList();
+            this.methods.specialityList();
+            this.methods.userList();
+        }
+
         this.methods.disciplineList();
-        this.methods.specialityList();
-        this.methods.userList();
     }
 
     methods = {

@@ -20,7 +20,8 @@ class UserModule {
               'staff': 'Персонал',
               'hirer': 'Работодатель',
               'admin': 'Администратор',
-              'student': 'Студент'
+              'student': 'Студент',
+              'departmentManager': 'Зав. кафедры'
           }
         },
 

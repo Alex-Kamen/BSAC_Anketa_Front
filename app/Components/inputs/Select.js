@@ -100,12 +100,12 @@ class Select {
         },
 
         setInputValue(inputId, value, name) {
+            this.openOptionList(inputId);
             document.querySelector(`#input${inputId}`).value = name;
             document.querySelector(`#input${inputId}`).setAttribute('selected', value);
         },
 
         rerenderOptionList(inputId, options) {
-            console.log(options)
             options = JSON.parse(options.replace(/`/g, '"'));
             this.errorMessage(inputId, options);
             const newList = options.filter((option) => option.name.match(new RegExp(`.*${this.getInputValue(inputId)}.*`)));

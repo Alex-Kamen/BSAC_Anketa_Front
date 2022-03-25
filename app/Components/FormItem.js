@@ -50,7 +50,9 @@ class FormItem {
             let tags = []
 
            document.querySelectorAll(`#form${id} .form__login input`)
-               .forEach((node) => tags.push([node.getAttribute('inputName'), node.hasAttributes('selected') ? node.getAttribute('selected') : node.value]));
+               .forEach((node) => {
+                   tags.push([node.getAttribute('inputName'), node.hasAttribute('selected') ? node.getAttribute('selected') : node.value])
+               });
 
            localStorage.setItem('tags', JSON.stringify(tags));
 
@@ -72,9 +74,9 @@ class FormItem {
 
             inputList.forEach((input) => {
                 if (input.inputType === '') {
-                    isValid = !new Input().methods.errorMessage(`input${input.inputId}`) && isValid;
+                    isValid = !new Input().methods.errorMessage(`${input.inputId}`) && isValid;
                 } else {
-                    isValid = !new Select().methods.errorMessage(`input${input.inputId}`) && isValid;
+                    isValid = !new Select().methods.errorMessage(`${input.inputId}`) && isValid;
                 }
             })
 
