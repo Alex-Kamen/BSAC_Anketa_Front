@@ -21,6 +21,7 @@
 	<script type="text/javascript" src="http://anketa.vfbsac.by/app/Store/modules/DepartmentModule.js?<?php echo time();?>"></script>
 	<script type="text/javascript" src="http://anketa.vfbsac.by/app/Store/modules/SpecialityModule.js?<?php echo time();?>"></script>
 	<script type="text/javascript" src="http://anketa.vfbsac.by/app/Store/modules/DisciplineModule.js?<?php echo time();?>"></script>
+	<script type="text/javascript" src="http://anketa.vfbsac.by/app/Store/modules/SpecializationModule.js?<?php echo time();?>"></script>
 	<script type="text/javascript" src="http://anketa.vfbsac.by/app/Store/modules/SettingsModule.js?<?php echo time();?>"></script>
 	<script type="text/javascript" src="http://anketa.vfbsac.by/app/Store/Store.js?<?php echo time();?>"></script>
 	<script type="text/javascript" src="http://anketa.vfbsac.by/app/Router/Router.js?<?php echo time();?>"></script>
@@ -43,6 +44,7 @@
 	<script type="text/javascript" src="http://anketa.vfbsac.by/app/Components/Filter.js?<?php echo time();?>"></script>
 	<script type="text/javascript" src="http://anketa.vfbsac.by/app/Components/forms/DepartmentForm.js?<?php echo time();?>"></script>
 	<script type="text/javascript" src="http://anketa.vfbsac.by/app/Components/forms/SpecialityForm.js?<?php echo time();?>"></script>
+	<script type="text/javascript" src="http://anketa.vfbsac.by/app/Components/forms/SpecializationForm.js?<?php echo time();?>"></script>
 	<script type="text/javascript" src="http://anketa.vfbsac.by/app/Components/forms/UserForm.js?<?php echo time();?>"></script>
 	<script type="text/javascript" src="http://anketa.vfbsac.by/app/Components/forms/DisciplineForm.js?<?php echo time();?>"></script>
 	<script type="text/javascript" src="http://anketa.vfbsac.by/app/Components/modals/AddDepartmentModal.js?<?php echo time();?>"></script>
@@ -57,6 +59,9 @@
 	<script type="text/javascript" src="http://anketa.vfbsac.by/app/Components/modals/AddUserModal.js?<?php echo time();?>"></script>
 	<script type="text/javascript" src="http://anketa.vfbsac.by/app/Components/modals/EditUserModal.js?<?php echo time();?>"></script>
 	<script type="text/javascript" src="http://anketa.vfbsac.by/app/Components/modals/DeleteUserModal.js?<?php echo time();?>"></script>
+	<script type="text/javascript" src="http://anketa.vfbsac.by/app/Components/modals/AddSpecializationModal.js?<?php echo time();?>"></script>
+    <script type="text/javascript" src="http://anketa.vfbsac.by/app/Components/modals/EditSpecializationModal.js?<?php echo time();?>"></script>
+    <script type="text/javascript" src="http://anketa.vfbsac.by/app/Components/modals/DeleteSpecializationModal.js?<?php echo time();?>"></script>
 	<script type="text/javascript" src="http://anketa.vfbsac.by/app/Components/modals/DataModal.js?<?php echo time();?>"></script>
 	<script type="text/javascript" src="http://anketa.vfbsac.by/app/Components/modals/DeleteAnswerModal.js?<?php echo time();?>"></script>
 	<script type="text/javascript" src="http://anketa.vfbsac.by/app/Router/routes.js?<?php echo time();?>"></script>

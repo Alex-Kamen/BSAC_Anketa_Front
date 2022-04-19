@@ -21,7 +21,7 @@ class UserModule {
               'hirer': 'Работодатель',
               'admin': 'Администратор',
               'student': 'Студент',
-              'departmentManager': 'Зав. кафедры'
+              'departmentManager': 'Зав. ф. кафедры'
           }
         },
 
@@ -45,12 +45,13 @@ class UserModule {
         'userTable': () => {
             return this.getters['userList']().then((userList) => {
                 return {
-                    header: ['id', 'Логин', 'Статус', ''],
+                    header: ['id', 'Логин', 'Статус', 'Специализация', ''],
                     dataList: userList.map((user) => ({
                         data: [
                             user.id,
                             user.login,
                             this.getters['userStatus']()[user.status],
+                            user.specializationName ? user.specializationName : '',
                             this.getters['userActions'](user.id)
                         ]
                     }))

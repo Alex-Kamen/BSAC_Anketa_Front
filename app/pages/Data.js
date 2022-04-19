@@ -7,10 +7,11 @@ class Data {
                 <div class="data">
                     <div class="container">
                         <div class="addModal">
-                            <div>${new AddUserModal().template()}</div>
+                            <div class="addUserModal"></div>
                             <div>${new AddDepartmentModal().template()}</div>
                             <div class="addDisciplineModal"></div>
                             <div>${new AddSpecialityModal().template()}</div>
+                            <div class="addSpecializationModal"></div>
                         </div>
                         <div class="container">
                         <div class="data__list">
@@ -42,6 +43,13 @@ class Data {
                                 </div>
                                 <div class="specialityList"></div>
                             </div>` : ''}
+                            ${!isDepartmentManager ? `<div class="list">
+                                <div class="list__header">
+                                    <h1 class="list__title">Специализация</h1>
+                                    <button class="inline__button" onclick="new Data().methods.openModal('addSpecializationModal')">Добавить специализацию</button>
+                                </div>
+                                <div class="specializationList"></div>
+                            </div>` : ''}
                         </div>
                         </div>
                     </div>
@@ -54,6 +62,7 @@ class Data {
             this.methods.departmentList();
             this.methods.specialityList();
             this.methods.userList();
+            this.methods.specializationList();
         }
 
         this.methods.disciplineList();
@@ -91,6 +100,24 @@ class Data {
             })
         },
 
+        specializationList() {
+            new Store().modules.specialization.getters.specializationTable().then((result) => {
+                new Store().modules.speciality.getters.specialitySelect().then((specialitySelect) => {
+                    let specializationBlock = document.querySelector('.specializationList');
+
+                    let formDataList = result.dataList.map((specialization) => {
+                        return new EditSpecializationModal().template({id: specialization.data[0], name: specialization.data[1], specialityId: specialization.data[2]}, specialitySelect.options) +
+                            new DeleteSpecializationModal().template({id: specialization.data[0], name: specialization.data[1], specialityId: specialization.data[2]})
+                    }).join(' ');
+
+                    specializationBlock.innerHTML = new Table().template(result) + formDataList;
+                    document.querySelector('.addSpecializationModal').innerHTML = new AddSpecializationModal().template(specialitySelect.options);
+                })
+
+
+            })
+        },
+
         specialityList() {
             new Store().modules.speciality.getters.specialityTable().then((result) => {
                 let specialityBlock = document.querySelector('.specialityList');
@@ -106,14 +133,17 @@ class Data {
 
         userList() {
             new Store().modules.user.getters.userTable().then((result) => {
-                let userBlock = document.querySelector('.userList');
+                new Store().modules.specialization.getters.specializationSelect().then((specializationSelect) => {
+                    let userBlock = document.querySelector('.userList');
 
-                let formDataList = result.dataList.map((user) => {
-                    return new EditUserModal().template({id: user.data[0], login: user.data[1], status: new Store().modules.user.getters.userStatusByName(user.data[2])}) +
-                        new DeleteUserModal().template({id: user.data[0], login: user.data[1], status: new Store().modules.user.getters.userStatusByName(user.data[2])})
-                }).join(' ');
+                    let formDataList = result.dataList.map((user) => {
+                        return new EditUserModal().template({id: user.data[0], login: user.data[1], status: new Store().modules.user.getters.userStatusByName(user.data[2]), specialization: user.data[3]}, specializationSelect.options) +
+                            new DeleteUserModal().template({id: user.data[0], login: user.data[1], status: new Store().modules.user.getters.userStatusByName(user.data[2]), specialization: user.data[3]})
+                    }).join(' ');
 
-                userBlock.innerHTML = new Table().template(result) + formDataList;
+                    userBlock.innerHTML = new Table().template(result) + formDataList;
+                    document.querySelector('.addUserModal').innerHTML = new AddUserModal().template(specializationSelect.options);
+                })
             })
         },
 

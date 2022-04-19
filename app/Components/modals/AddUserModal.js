@@ -1,10 +1,10 @@
 class AddUserModal {
-    template() {
+    template(specializationList) {
         return `
             <div class="modal" id="addUser">
                 <h1>Создание пользователя</h1>
                 <div class="form">
-                    ${new UserForm().template()}
+                    ${new UserForm().template({}, specializationList)}
                 </div>
                 <div class="form__control">
                     <button class="inline__button" onclick="new Data().methods.closeModal()">
@@ -28,6 +28,10 @@ class AddUserModal {
                 status: new Select().methods.getSelectValue('userStatus')
             }
 
+            if (new Select().methods.getSelectValue(`userStatus`) === 'student') {
+                userData.specialization =  +new Select().methods.getSelectValue('userSpecialization');
+            }
+
             new Store().modules.user.getters.addUser(userData);
             new Data().methods.closeModal();
             this.reset();
@@ -36,13 +40,15 @@ class AddUserModal {
         valid() {
           return new Select().methods.errorMessage('userStatus')
               || new Input().methods.errorMessage('userPassword')
-              || new Input().methods.errorMessage('userLogin');
+              || new Input().methods.errorMessage('userLogin')
+              || (new Select().methods.getSelectValue(`userStatus`) === 'student' && new Select().methods.errorMessage('userSpecialization'));
         },
 
         reset() {
             new Input().methods.reset('userLogin');
             new Input().methods.reset('userPassword');
             new Select().methods.reset('userStatus');
+            new Select().methods.getSelectValue(`userStatus`) === 'student' && new Select().methods.reset('userSpecialization');
         }
     }
 }

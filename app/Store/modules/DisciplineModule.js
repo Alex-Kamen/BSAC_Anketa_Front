@@ -9,7 +9,13 @@ class DisciplineModule {
         },
 
         'disciplineSelect': () => {
-            return this.getters['disciplineList']().then((result) => {
+            const disciplineGetter = JSON.parse(localStorage.getItem('session')).status === 'departmentManager'
+                ? 'disciplineListByDepartmentId'
+                : 'disciplineList';
+
+            const departmentId = JSON.parse(localStorage.getItem('session')).departmentId;
+
+            return this.getters[disciplineGetter](departmentId).then((result) => {
                 return {
                     placeholder: 'Дисциплина',
                     inputId: 'discipline',
@@ -28,7 +34,13 @@ class DisciplineModule {
         },
 
         'disciplineTable': () => {
-            return this.getters['disciplineList']().then((disciplineList) => {
+            const disciplineGetter = JSON.parse(localStorage.getItem('session')).status === 'departmentManager'
+                ? 'disciplineListByDepartmentId'
+                : 'disciplineList';
+
+            const departmentId = JSON.parse(localStorage.getItem('session')).departmentId;
+
+            return this.getters[disciplineGetter](departmentId).then((disciplineList) => {
                 return {
                     header: ['id', 'Дисциплина', 'Кафедра', ''],
                     dataList: disciplineList.map((discipline) => ({data:

@@ -20,7 +20,7 @@ class EditDisciplineModal {
 
     methods = {
         editDiscipline(formId) {
-            if (this.valid()) return;
+            if (this.valid(formId)) return;
 
             const disciplineData = {
                 id: formId,

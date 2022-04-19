@@ -9,6 +9,7 @@ class Filter {
                 <div class="department"></div>
                 <div class="discipline"></div>
                 <div class="speciality"></div>
+                <div class="specialization"></div>
                 <div class="employeeType"></div>
                 <div class="educationType"></div>
                 <div class="age"></div>
@@ -29,14 +30,21 @@ class Filter {
         let searchText = params.find((param) => param.name === 'searchText') || {};
 
         this.methods.formList(params.find((param) => param.name === 'formId'));
-        this.methods.departmentList(params.find((param) => param.name === 'department'));
         this.methods.specialityList(params.find((param) => param.name === 'speciality'));
+        this.methods.specializationList(params.find((param) => param.name === 'specialization'));
         this.methods.disciplineList(params.find((param) => param.name === 'discipline'));
-        this.methods.employeeTypeList(params.find((param) => param.name === 'employeeType'));
-        this.methods.educationTypeList(params.find((param) => param.name === 'educationType'));
-        this.methods.ageList(params.find((param) => param.name === 'age'));
         this.methods.loginList(params.find((param) => param.name === 'login'));
-        document.querySelector('.searchText').innerHTML = new Input().template({placeholder: 'Другое', inputId: 'searchText', value: searchText.value});
+        this.methods.educationTypeList(params.find((param) => param.name === 'educationType'));
+
+        if (JSON.parse(localStorage.getItem('session')).status !== 'departmentManager') {
+            this.methods.employeeTypeList(params.find((param) => param.name === 'employeeType'));
+            this.methods.departmentList(params.find((param) => param.name === 'department'));
+            this.methods.ageList(params.find((param) => param.name === 'age'));
+
+            document.querySelector('.searchText').innerHTML = new Input().template(
+                {placeholder: 'Другое', inputId: 'searchText', value: searchText.value}
+            );
+        }
     }
 
     methods = {
@@ -93,16 +101,28 @@ class Filter {
             })
         },
 
+        specializationList(value = {}) {
+            new Store().modules.specialization.getters.specializationSelect().then((result) => {
+                result.value = value.value;
+                document.querySelector('.specialization').innerHTML = new Select().template(result);
+            })
+        },
+
         saveFilter() {
             const formId = new Select().methods.getSelectValue('formId');
-            const department = new Select().methods.getSelectValue('department');
             const discipline = new Select().methods.getSelectValue('discipline');
             const speciality = new Select().methods.getSelectValue('speciality');
-            const employeeType = new Select().methods.getSelectValue('employeeType');
             const educationType = new Select().methods.getSelectValue('educationType');
-            const age = new Select().methods.getSelectValue('age');
             const login = new Select().methods.getSelectValue('login');
-            const searchText = new Input().methods.getInputValue('searchText');
+            const specialization = new Select().methods.getSelectValue('specialization');
+            let employeeType, department, age, searchText;
+
+            if (JSON.parse(localStorage.getItem('session')).status !== 'departmentManager') {
+                employeeType = new Select().methods.getSelectValue('employeeType');
+                department = new Select().methods.getSelectValue('department');
+                age = new Select().methods.getSelectValue('age');
+                searchText = new Input().methods.getInputValue('searchText');
+            }
 
             let requestLine = '?';
             let paramCount = 0;
@@ -160,6 +180,13 @@ class Filter {
                 if (paramCount > 0) requestLine += '&';
 
                 requestLine += `age=${age}`;
+                paramCount++;
+            }
+
+            if (specialization) {
+                if (paramCount > 0) requestLine += '&';
+
+                requestLine += `specialization=${specialization}`;
                 paramCount++;
             }
 

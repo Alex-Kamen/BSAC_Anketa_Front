@@ -21,9 +21,14 @@ class FormModule {
         'saveForm' : (data, recommendation) => {
             const id = window.location.pathname.replace('/form/', '');
             const login = JSON.parse(localStorage.getItem('session')).login;
+            const specialization = JSON.parse(localStorage.getItem('session')).specialization;
             const tags = JSON.parse(localStorage.getItem('tags'));
             tags.push(['login', login]);
             tags.push(['formId', id]);
+
+            if (JSON.parse(localStorage.getItem('session')).status === 'student') {
+                tags.push(['specialization', specialization]);
+            }
 
             let requestBody = {marks: data.marks, weights: data.weights, tags, recommendation, formId: id}
 
