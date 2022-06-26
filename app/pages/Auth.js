@@ -51,8 +51,13 @@ class Auth {
                 if (response.status) {
                     localStorage.setItem('session', JSON.stringify(response));
 
-                    if (response.status === 'admin' || response.status === 'departmentManager') {
+                    if (response.status === 'admin') {
                         new Router().relocate('/dashboard');
+                        return;
+                    }
+
+                    if (response.status === 'departmentManager') {
+                        new Router().relocate(`/dashboard?department=${response.departmentId}`);
                         return;
                     }
 

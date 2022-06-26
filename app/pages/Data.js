@@ -134,15 +134,17 @@ class Data {
         userList() {
             new Store().modules.user.getters.userTable().then((result) => {
                 new Store().modules.specialization.getters.specializationSelect().then((specializationSelect) => {
-                    let userBlock = document.querySelector('.userList');
+                    new Store().modules.department.getters.departmentSelect().then((departmentSelect) => {
+                        let userBlock = document.querySelector('.userList');
 
-                    let formDataList = result.dataList.map((user) => {
-                        return new EditUserModal().template({id: user.data[0], login: user.data[1], status: new Store().modules.user.getters.userStatusByName(user.data[2]), specialization: user.data[3]}, specializationSelect.options) +
-                            new DeleteUserModal().template({id: user.data[0], login: user.data[1], status: new Store().modules.user.getters.userStatusByName(user.data[2]), specialization: user.data[3]})
-                    }).join(' ');
+                        let formDataList = result.dataList.map((user) => {
+                            return new EditUserModal().template({id: user.data[0], login: user.data[1], status: new Store().modules.user.getters.userStatusByName(user.data[2]), specialization: user.data[3], departmentId: user.data[4]}, specializationSelect.options, departmentSelect.options) +
+                                new DeleteUserModal().template({id: user.data[0], login: user.data[1], status: new Store().modules.user.getters.userStatusByName(user.data[2]), specialization: user.data[3], departmentId: user.data[4]})
+                        }).join(' ');
 
-                    userBlock.innerHTML = new Table().template(result) + formDataList;
-                    document.querySelector('.addUserModal').innerHTML = new AddUserModal().template(specializationSelect.options);
+                        userBlock.innerHTML = new Table().template(result) + formDataList;
+                        document.querySelector('.addUserModal').innerHTML = new AddUserModal().template(specializationSelect.options, departmentSelect.options);
+                    })
                 })
             })
         },
@@ -150,7 +152,7 @@ class Data {
         openModal(id) {
             const modal = document.querySelector(`.modal[id="${id}"]`);
             modal.style.left = '50%';
-            modal.style.top = `${document.querySelector('html').offsetHeight / 2 - modal.offsetHeight/2}px`;
+            modal.style.top = `${document.querySelector('html').offsetHeight / 2 - modal.offsetHeight/2 + document.querySelector('body').scrollTop}px`;
             modal.style.opacity = 1;
         },
 

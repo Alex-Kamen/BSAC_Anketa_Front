@@ -30,8 +30,8 @@ class SettingsModule {
                 inputId: 'age',
                 options: [
                     {value: 'до 35 лет', name: 'до 35 лет'},
-                    {value: 'до 35 лет', name: 'от 35 до 55 лет'},
-                    {value: 'до 35 лет', name: 'старше 55 лет'},
+                    {value: 'от 35 до 55 лет', name: 'от 35 до 55 лет'},
+                    {value: 'старше 55 лет', name: 'старше 55 лет'},
                 ]
             }
         },

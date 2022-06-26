@@ -107,6 +107,7 @@ class Select {
 
         rerenderOptionList(inputId, options) {
             options = JSON.parse(options.replace(/`/g, '"'));
+            document.querySelector(`#input${inputId}`).setAttribute('selected', '');
             this.errorMessage(inputId, options);
             const newList = options.filter((option) => option.name.match(new RegExp(`.*${this.getInputValue(inputId)}.*`)));
             document.querySelector(`#optionList${inputId}`).innerHTML = this.getOptionList(inputId, newList);

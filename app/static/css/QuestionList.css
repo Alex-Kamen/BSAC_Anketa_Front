@@ -67,3 +67,26 @@ input[type="checkbox"] {
     margin: 10px 0 0 0;
     height: 15px;
 }
+
+.checkboxEditItem {
+    width: 90%;
+}
+
+.checkboxEditItem .recommends {
+    width: 100%;
+    height: inherit;
+    display: block;
+    margin-left: 0;
+    margin-top: 10px;
+}
+
+.questionEdit__subtitle {
+    font-family: Arial;
+    font-size: 14px;
+    padding-top: 10px;
+}
+
+.questionEdit__title {
+    font-family: Arial;
+    font-size: 14px;
+}

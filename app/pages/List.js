@@ -38,6 +38,10 @@ class List {
                 let dataModals = '';
                 let deleteModals = '';
 
+                if (JSON.parse(localStorage.getItem('session')).status === 'departmentManager') {
+                    header.pop();
+                }
+
                 for (const answer of response.answerList) {
                     const formData = response.formData.find(form => form.id === answer.formId);
                     const formName = formData ? formData.name : '';
@@ -48,6 +52,10 @@ class List {
                 `
                     dataList.push({data: [answer.time, formName, answer.login, action], object: answer});
 
+                    if (JSON.parse(localStorage.getItem('session')).status === 'departmentManager') {
+                        dataList[dataList.length-1].data.pop();
+                    }
+
                     let dataModal = {
                         answer: answer,
                         formData: this.getFormById(answer.formId, response.formData)
@@ -56,6 +64,8 @@ class List {
                     dataModals += new DataModal().template(dataModal);
                     deleteModals += new DeleteAnswerModal().template(answer);
                 }
+
+                document.querySelector('.answers__title').innerHTML = `Список ответов. Всего ответов - ${response.answerList.length}`
 
                 document.querySelector('.answers__modals').innerHTML = dataModals;
                 document.querySelector('.delete__answer').innerHTML = deleteModals;
@@ -75,7 +85,7 @@ class List {
             })
 
             modal.style.left = '50%';
-            modal.style.top = `${document.querySelector('html').offsetHeight / 2 - modal.offsetHeight/2}px`;
+            modal.style.top = `${document.querySelector('html').offsetHeight / 2 - modal.offsetHeight/2 + document.querySelector('body').scrollTop}px`;
             modal.style.opacity = 1;
         },
 

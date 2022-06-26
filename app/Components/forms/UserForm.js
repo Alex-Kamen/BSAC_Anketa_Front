@@ -1,5 +1,5 @@
 class UserForm {
-    template(param = {}, specializationOptionList = []) {
+    template(param = {}, specializationOptionList = [], departmentOptionList = []) {
         const options = [
             {value: 'student', name: 'Студент'},
             {value: 'hirer', name: 'Работодатель'},
@@ -17,6 +17,10 @@ class UserForm {
             ? new Select().template({placeholder: 'Специализация', inputId: `userSpecialization${param.id || ''}`, value: param.specialization, options: specializationOptionList})
             : ''
                 }
+                ${param.status === 'departmentManager' || typeof param.status === 'undefined'
+            ? new Select().template({placeholder: 'Кафедра', inputId: `userDepartment${param.id || ''}`, value: param.departmentId, options: departmentOptionList})
+            : ''
+        }
             </div>
         `
     }

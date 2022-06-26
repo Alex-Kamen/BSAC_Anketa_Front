@@ -12,6 +12,7 @@
 	<link rel="stylesheet" type="text/css" href="http://anketa.vfbsac.by/app/static/css/Select.css?<?php echo time();?>">
 	<link rel="stylesheet" type="text/css" href="http://anketa.vfbsac.by/app/static/css/QuestionList.css?<?php echo time();?>">
 	<link rel="stylesheet" type="text/css" href="http://anketa.vfbsac.by/app/static/css/Filter.css?<?php echo time();?>">
+	<link rel="stylesheet" type="text/css" href="http://anketa.vfbsac.by/app/static/css/FilterData.css?<?php echo time();?>">
 	<link rel="stylesheet" type="text/css" href="http://anketa.vfbsac.by/app/static/css/Table.css?<?php echo time();?>">
 	<link rel="stylesheet" type="text/css" href="http://anketa.vfbsac.by/app/static/css/Modal.css?<?php echo time();?>">
 	<link rel="stylesheet" type="text/css" href="http://anketa.vfbsac.by/app/static/css/Data.css?<?php echo time();?>">
@@ -30,6 +31,7 @@
 	<script type="text/javascript" src="http://anketa.vfbsac.by/app/pages/FormList.js?<?php echo time();?>"></script>
 	<script type="text/javascript" src="http://anketa.vfbsac.by/app/pages/Form.js?<?php echo time();?>"></script>
 	<script type="text/javascript" src="http://anketa.vfbsac.by/app/pages/Data.js?<?php echo time();?>"></script>
+	<script type="text/javascript" src="http://anketa.vfbsac.by/app/pages/FormEditor.js?<?php echo time();?>"></script>
 	<script type="text/javascript" src="http://anketa.vfbsac.by/app/pages/Dashboard.js?<?php echo time();?>"></script>
 	<script type="text/javascript" src="http://anketa.vfbsac.by/app/Components/table/Table.js?<?php echo time();?>"></script>
 	<script type="text/javascript" src="http://anketa.vfbsac.by/app/Components/Header.js?<?php echo time();?>"></script>
@@ -37,11 +39,16 @@
 	<script type="text/javascript" src="http://anketa.vfbsac.by/app/Components/questionTypes/TextArea.js?<?php echo time();?>"></script>
 	<script type="text/javascript" src="http://anketa.vfbsac.by/app/Components/questionTypes/QuestionInput.js?<?php echo time();?>"></script>
 	<script type="text/javascript" src="http://anketa.vfbsac.by/app/Components/questionTypes/Checkbox.js?<?php echo time();?>"></script>
+	<script type="text/javascript" src="http://anketa.vfbsac.by/app/Components/questionEditTypes/QuestionEditTextArea.js?<?php echo time();?>"></script>
+    <script type="text/javascript" src="http://anketa.vfbsac.by/app/Components/questionEditTypes/QuestionEditInput.js?<?php echo time();?>"></script>
+    <script type="text/javascript" src="http://anketa.vfbsac.by/app/Components/questionEditTypes/QuestionEditCheckbox.js?<?php echo time();?>"></script>
 	<script type="text/javascript" src="http://anketa.vfbsac.by/app/Components/QuestionItem.js?<?php echo time();?>"></script>
+	<script type="text/javascript" src="http://anketa.vfbsac.by/app/Components/QuestionEditItem.js?<?php echo time();?>"></script>
 	<script type="text/javascript" src="http://anketa.vfbsac.by/app/Components/inputs/Select.js?<?php echo time();?>"></script>
 	<script type="text/javascript" src="http://anketa.vfbsac.by/app/Components/inputs/Input.js?<?php echo time();?>"></script>
 	<script type="text/javascript" src="http://anketa.vfbsac.by/app/Components/FormItem.js?<?php echo time();?>"></script>
 	<script type="text/javascript" src="http://anketa.vfbsac.by/app/Components/Filter.js?<?php echo time();?>"></script>
+	<script type="text/javascript" src="http://anketa.vfbsac.by/app/Components/FilterData.js?<?php echo time();?>"></script>
 	<script type="text/javascript" src="http://anketa.vfbsac.by/app/Components/forms/DepartmentForm.js?<?php echo time();?>"></script>
 	<script type="text/javascript" src="http://anketa.vfbsac.by/app/Components/forms/SpecialityForm.js?<?php echo time();?>"></script>
 	<script type="text/javascript" src="http://anketa.vfbsac.by/app/Components/forms/SpecializationForm.js?<?php echo time();?>"></script>

@@ -13,7 +13,13 @@ class FormModule {
         },
 
         'form': () => {
-            const id = window.location.pathname.replace('/form/', '');
+            let id = '';
+
+            if (window.location.pathname.includes('/form/')) {
+                id = window.location.pathname.replace('/form/', '');
+            } else {
+                id = window.location.pathname.replace('/formEdit/', '');
+            }
 
             return fetch(`http://anketaback.vfbsac.by/form/${id}`).then(response => response.json());
         },

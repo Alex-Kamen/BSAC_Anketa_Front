@@ -8,8 +8,10 @@ class FormItem {
             >
                 <h3 class="form__title visible">${props.name}</h3>
                 <div class="form__login hidden">
-                    ${this.methods.renderTagsInput(props, data)}
-                    <button name="submit" onclick="new FormItem().methods.openForm(${props.id})">Заполнить анкету</button>
+                    ${JSON.parse(localStorage.getItem('session')).status !== 'admin' 
+                        ? this.methods.renderTagsInput(props, data) 
+                        : ''}
+                    <button name="submit" onclick="new FormItem().methods.openForm(${props.id})">${JSON.parse(localStorage.getItem('session')).status === 'admin' ? 'Редактировать анкету': 'Заполнить анкету'}</button>
                 </div>
             </div>
     `
@@ -45,18 +47,22 @@ class FormItem {
         },
 
         openForm(id) {
-            if (!this.valid(id)) return;
+            if (JSON.parse(localStorage.getItem('session')).status === 'admin') {
+                new Router().relocate(`/formEdit/${id}`);
+            } else {
+                if (!this.valid(id)) return;
 
-            let tags = []
+                let tags = []
 
-           document.querySelectorAll(`#form${id} .form__login input`)
-               .forEach((node) => {
-                   tags.push([node.getAttribute('inputName'), node.hasAttribute('selected') ? node.getAttribute('selected') : node.value])
-               });
+                document.querySelectorAll(`#form${id} .form__login input`)
+                    .forEach((node) => {
+                        tags.push([node.getAttribute('inputName'), node.hasAttribute('selected') ? node.getAttribute('selected') : node.value])
+                    });
 
-           localStorage.setItem('tags', JSON.stringify(tags));
+                localStorage.setItem('tags', JSON.stringify(tags));
 
-           new Router().relocate(`/form/${id}`);
+                new Router().relocate(`/form/${id}`);
+            }
         },
 
         valid(id) {

@@ -6,6 +6,7 @@ class Dashboard {
                     <div class="container">
                         <div class="filter__button report"><img src="http://anketaback.vfbsac.by/static/img/file.png" alt="report" onclick="new Dashboard().methods.report()"></div>
                         ${new Filter().template()}
+                        ${new FilterData().template()}
                         <div class="diogram__list">
                             <div class="diogram__item">
                                 <div class="diogram__content">
@@ -23,7 +24,8 @@ class Dashboard {
 
     mounted() {
         this.methods.renderDiagram();
-        new Filter().mounted()
+        new Filter().mounted();
+        new FilterData().mounted()
     }
 
     methods = {

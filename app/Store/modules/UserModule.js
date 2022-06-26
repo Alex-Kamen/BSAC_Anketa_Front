@@ -45,13 +45,14 @@ class UserModule {
         'userTable': () => {
             return this.getters['userList']().then((userList) => {
                 return {
-                    header: ['id', 'Логин', 'Статус', 'Специализация', ''],
+                    header: ['id', 'Логин', 'Статус', 'Специализация', 'Кафедра', ''],
                     dataList: userList.map((user) => ({
                         data: [
                             user.id,
                             user.login,
                             this.getters['userStatus']()[user.status],
-                            user.specializationName ? user.specializationName : '',
+                            user.specializationName ? user.specializationName : '-',
+                            user.departmentName ? user.departmentName : '-',
                             this.getters['userActions'](user.id)
                         ]
                     }))
@@ -67,7 +68,10 @@ class UserModule {
                 headers: {
                     'Content-Type': 'application/json'
                 }
-            }).then(() => new Data().mounted())
+            }).then((response) => {
+                new Data().mounted()
+                response.json()
+            })
         },
 
         'editUser': (user) => {
@@ -78,7 +82,10 @@ class UserModule {
                 headers: {
                     'Content-Type': 'application/json'
                 }
-            }).then(() => new Data().mounted())
+            }).then((response) => {
+                new Data().mounted()
+                response.json()
+            })
         },
 
         'deleteUser': (user) => {
@@ -95,9 +102,15 @@ class UserModule {
         'loginSelect': () => {
             return this.getters.userList().then((result) => {
                 return {
-                    placeholder: 'Логин',
+                    placeholder: JSON.parse(localStorage.getItem('session')).status === 'departmentManager' ? 'Группа' : 'Логин',
                     inputId: 'login',
-                    options: result.map((user) => ({name: user.login, value: user.login}))
+                    options: result.map((user) => {
+                        if (JSON.parse(localStorage.getItem('session')).status === 'departmentManager'
+                            && user.status === 'student'
+                            || JSON.parse(localStorage.getItem('session')).status !== 'departmentManager') {
+                            return {name: user.login, value: user.login}
+                        }
+                    }).filter((option) => option)
                 }
             })
         }

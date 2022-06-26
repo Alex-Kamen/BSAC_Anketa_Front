@@ -1,0 +1,17 @@
+.filterData {
+    font-family: Arial;
+    font-size: 17px;
+    margin-left: 10px;
+    display: inline-block;
+}
+
+.filterData div {
+    padding-bottom: 10px;
+}
+
+.filterData .filter__form {
+    font-size: 25px;
+    padding: 25px 0 15px;
+}
+
+

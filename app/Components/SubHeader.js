@@ -7,6 +7,7 @@ class SubHeader {
                         <div class="subheader__item" onclick="new SubHeader().methods.relocate('/dashboard')">Главная</div>
                         <div class="subheader__item" onclick="new SubHeader().methods.relocate('/list')">Ответы</div>
                         <div class="subheader__item" onclick="new SubHeader().methods.relocate('/data')">Данные</div>
+             <!--           <div class="subheader__item" onclick="new SubHeader().methods.relocate('/formList')">Анкеты</div>-->
                     </div>
                 </div>
             </div>

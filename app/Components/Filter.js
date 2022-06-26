@@ -124,6 +124,10 @@ class Filter {
                 searchText = new Input().methods.getInputValue('searchText');
             }
 
+            if (JSON.parse(localStorage.getItem('session')).status === 'departmentManager') {
+                department = JSON.parse(localStorage.getItem('session')).departmentId;
+            }
+
             let requestLine = '?';
             let paramCount = 0;
 
